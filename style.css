@@ -1,0 +1,503 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Cairo", sans-serif;
+    background: #f7efed;
+    color: #654b51;
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* شاشة البداية */
+.start-screen {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    background:
+        url("images/background.jpg")
+        center / cover no-repeat;
+}
+
+.start-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            rgba(255, 250, 247, 0.4),
+            rgba(78, 45, 53, 0.58)
+        );
+    backdrop-filter: blur(1.5px);
+}
+
+.start-content {
+    width: min(94%, 720px);
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 48px 30px;
+    border-radius: 30px;
+    background: rgba(255, 252, 249, 0.78);
+    border: 1px solid rgba(201, 159, 112, 0.55);
+    backdrop-filter: blur(13px);
+    box-shadow:
+        0 30px 80px rgba(72, 42, 49, 0.24),
+        inset 0 0 0 8px rgba(255, 255, 255, 0.22);
+    animation: riseIn 1.3s ease;
+}
+
+.start-bismillah {
+    font-family: "Aref Ruqaa", serif;
+    font-size: 29px;
+    color: #985f6b;
+}
+
+.start-monogram {
+    margin-top: 18px;
+    font-family: "Aref Ruqaa", serif;
+    font-size: clamp(70px, 12vw, 115px);
+    line-height: 1;
+    color: #a96c78;
+    text-shadow:
+        0 2px 0 rgba(255, 255, 255, 0.6),
+        0 12px 28px rgba(113, 65, 75, 0.17);
+}
+
+.start-monogram span {
+    color: #bc8c52;
+    font-size: 0.55em;
+}
+
+.start-content h1 {
+    margin-top: 14px;
+    font-family: "Aref Ruqaa", serif;
+    font-size: clamp(40px, 7vw, 66px);
+    line-height: 1.45;
+    color: #6e4a53;
+}
+
+.start-content h1 span {
+    display: block;
+    color: #b38757;
+    font-size: 0.65em;
+}
+
+.start-date {
+    margin-top: 15px;
+    font-size: 23px;
+    color: #87676d;
+}
+
+#startExperience {
+    margin-top: 30px;
+    padding: 16px 42px;
+    border: 1px solid rgba(187, 137, 81, 0.65);
+    border-radius: 50px;
+    color: #fffdf8;
+    font-size: 18px;
+    cursor: pointer;
+    background:
+        linear-gradient(
+            135deg,
+            #c78b98,
+            #9d606d
+        );
+    box-shadow:
+        0 14px 30px rgba(122, 73, 84, 0.25);
+    transition: 0.3s;
+}
+
+#startExperience:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow:
+        0 19px 38px rgba(122, 73, 84, 0.34);
+}
+
+.start-note {
+    margin-top: 13px;
+    color: #8e7378;
+    font-size: 14px;
+}
+
+/* العرض السينمائي */
+.cinematic-intro {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    background: #000;
+    overflow: hidden;
+}
+
+.cinematic-intro.show {
+    display: block;
+    animation: fadeIn 0.8s ease;
+}
+
+#cinematicVideo {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    background: #000;
+}
+
+.video-shade {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.16)
+        );
+}
+
+.skip-button {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 3;
+    padding: 11px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 30px;
+    color: white;
+    background: rgba(24, 15, 17, 0.4);
+    backdrop-filter: blur(9px);
+    cursor: pointer;
+}
+
+.scene-counter {
+    position: absolute;
+    left: 24px;
+    bottom: 24px;
+    z-index: 3;
+    padding: 8px 15px;
+    border-radius: 25px;
+    color: white;
+    background: rgba(24, 15, 17, 0.4);
+    backdrop-filter: blur(9px);
+}
+
+/* صفحة الدعوة */
+.wedding-content {
+    display: none;
+    min-height: 100vh;
+    padding: 65px 20px 85px;
+    background:
+        linear-gradient(
+            rgba(255, 250, 248, 0.88),
+            rgba(247, 234, 231, 0.95)
+        ),
+        url("images/background.jpg")
+        center / cover fixed no-repeat;
+}
+
+.wedding-content.show {
+    display: block;
+    animation: revealContent 1.2s ease;
+}
+
+.invitation-card {
+    width: min(95%, 820px);
+    margin: 0 auto;
+    padding: 68px 40px;
+    text-align: center;
+    border-radius: 34px;
+    background: rgba(255, 253, 250, 0.92);
+    border: 1px solid rgba(194, 146, 94, 0.48);
+    backdrop-filter: blur(12px);
+    box-shadow:
+        0 30px 85px rgba(99, 59, 67, 0.18),
+        inset 0 0 0 10px rgba(255, 255, 255, 0.35);
+}
+
+.bismillah {
+    font-family: "Aref Ruqaa", serif;
+    font-size: 31px;
+    color: #9b6170;
+}
+
+.invitation-text {
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 2;
+    color: #80656a;
+}
+
+.invitation-card h2 {
+    margin-top: 28px;
+    font-family: "Aref Ruqaa", serif;
+    font-size: clamp(45px, 8vw, 77px);
+    line-height: 1.45;
+    color: #734d56;
+}
+
+.invitation-card h2 span {
+    display: block;
+    color: #b48655;
+    font-size: 0.62em;
+}
+
+.divider {
+    margin: 26px auto;
+    color: #bd8d4f;
+    font-size: 27px;
+}
+
+.wedding-day {
+    font-size: 22px;
+    color: #9d6572;
+}
+
+.wedding-date {
+    margin-top: 8px;
+    font-size: 37px;
+    font-weight: 700;
+    color: #664b51;
+}
+
+.details-grid {
+    margin-top: 34px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.details-grid article {
+    padding: 31px 20px;
+    border-radius: 24px;
+    background: rgba(255, 247, 246, 0.86);
+    border: 1px solid rgba(216, 173, 157, 0.58);
+    box-shadow:
+        0 13px 34px rgba(106, 67, 75, 0.09);
+}
+
+.detail-symbol {
+    font-size: 35px;
+    color: #b68054;
+}
+
+.details-grid h3 {
+    margin-top: 9px;
+    font-size: 22px;
+    color: #80545e;
+}
+
+.details-grid p {
+    margin-top: 8px;
+    line-height: 1.8;
+    color: #8f7479;
+}
+
+.countdown-section {
+    margin-top: 43px;
+}
+
+.countdown-title {
+    font-family: "Aref Ruqaa", serif;
+    font-size: 30px;
+    color: #98616e;
+}
+
+.countdown {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.countdown > div {
+    padding: 23px 8px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(208, 160, 138, 0.58);
+    box-shadow:
+        0 12px 30px rgba(105, 68, 75, 0.08);
+}
+
+.countdown strong {
+    display: block;
+    font-size: 38px;
+    color: #754d57;
+}
+
+.countdown span {
+    display: block;
+    margin-top: 5px;
+    color: #9c7780;
+}
+
+.closing {
+    margin-top: 38px;
+    font-family: "Aref Ruqaa", serif;
+    font-size: 28px;
+    color: #a26774;
+}
+
+.blessing {
+    margin-top: 17px;
+    font-size: 18px;
+    line-height: 1.9;
+    color: #80666b;
+}
+
+/* زر الموسيقى */
+.music-button {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    z-index: 200;
+    width: 54px;
+    height: 54px;
+    border: 1px solid rgba(201, 151, 94, 0.7);
+    border-radius: 50%;
+    color: #fff8ec;
+    background: rgba(105, 60, 70, 0.78);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    box-shadow:
+        0 10px 30px rgba(74, 43, 49, 0.24);
+}
+
+.music-button.playing {
+    animation: pulse 1.8s infinite;
+}
+
+/* الحركات */
+@keyframes riseIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes revealContent {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        box-shadow:
+            0 10px 30px rgba(74, 43, 49, 0.24),
+            0 0 0 0 rgba(201, 151, 94, 0.35);
+    }
+
+    50% {
+        box-shadow:
+            0 10px 30px rgba(74, 43, 49, 0.24),
+            0 0 0 11px rgba(201, 151, 94, 0);
+    }
+}
+
+/* الموبايل */
+@media (max-width: 650px) {
+    .start-content {
+        padding: 42px 21px;
+    }
+
+    .start-bismillah {
+        font-size: 24px;
+    }
+
+    .skip-button {
+        top: 15px;
+        right: 15px;
+    }
+
+    .scene-counter {
+        left: 15px;
+        bottom: 15px;
+    }
+
+    .invitation-card {
+        padding: 50px 22px;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .countdown {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .wedding-date {
+        font-size: 30px;
+    }
+
+    .music-button {
+        left: 14px;
+        bottom: 14px;
+        width: 49px;
+        height: 49px;
+    }
+}#cinematicVideo {
+    transition:
+        opacity 0.7s ease,
+        filter 0.7s ease,
+        transform 0.9s ease;
+}
+
+#cinematicVideo.video-fade-out {
+    opacity: 0;
+    filter: brightness(1.5) blur(5px);
+    transform: scale(1.04);
+}
+
+#cinematicVideo.video-fade-in {
+    animation: cinematicVideoIn 0.9s ease;
+}
+
+@keyframes cinematicVideoIn {
+    from {
+        opacity: 0;
+        filter: brightness(1.45) blur(5px);
+        transform: scale(1.04);
+    }
+
+    to {
+        opacity: 1;
+        filter: brightness(1) blur(0);
+        transform: scale(1);
+    }
+}

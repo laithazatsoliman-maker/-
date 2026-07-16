@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>دعوة زفاف ليث وإكرام</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@300;400;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="style.css">
+</head>
+
+<body>
+
+    <!-- شاشة بدء التجربة -->
+    <section class="start-screen"
+             id="startScreen">
+
+        <div class="start-overlay"></div>
+
+        <div class="start-content">
+
+            <p class="start-bismillah">
+                بسم الله الرحمن الرحيم
+            </p>
+
+            <div class="start-monogram">
+                ل <span>&</span> إ
+            </div>
+
+            <h1>
+                د. ليث سليمان
+                <span>&</span>
+                د. إكرام ملحم
+            </h1>
+
+            <p class="start-date">
+                ١٦ أبريل ٢٠٢٧
+            </p>
+
+            <button id="startExperience">
+                افتح الدعوة
+            </button>
+
+            <p class="start-note">
+                اضغط لبدء العرض والموسيقى
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- العرض السينمائي -->
+    <section class="cinematic-intro"
+             id="cinematicIntro">
+
+        <video id="cinematicVideo"
+               playsinline
+               preload="auto">
+            <source src="videos/intro.mp4"
+                    type="video/mp4">
+        </video>
+
+        <div class="video-shade"></div>
+
+        <button class="skip-button"
+                id="skipButton">
+            تخطي العرض
+        </button>
+
+        <div class="scene-counter"
+             id="sceneCounter">
+            ١ / ٣
+        </div>
+
+    </section>
+
+
+    <!-- صفحة تفاصيل الحفل -->
+    <main class="wedding-content"
+          id="weddingContent">
+
+        <section class="invitation-card">
+
+            <p class="bismillah">
+                بسم الله الرحمن الرحيم
+            </p>
+
+            <p class="invitation-text">
+                تتشرف عائلتا العروسين بدعوتكم لمشاركتهما فرحة زفافهما
+            </p>
+
+            <h2>
+                د. ليث سليمان
+                <span>&</span>
+                د. إكرام ملحم
+            </h2>
+
+            <div class="divider">❦</div>
+
+            <p class="wedding-day">
+                يوم الجمعة
+            </p>
+
+            <p class="wedding-date">
+                ١٦ أبريل ٢٠٢٧
+            </p>
+
+            <div class="details-grid">
+
+                <article>
+                    <div class="detail-symbol">◇</div>
+
+                    <h3>التاريخ</h3>
+
+                    <p>
+                        الجمعة<br>
+                        ١٦ أبريل ٢٠٢٧
+                    </p>
+                </article>
+
+                <article>
+                    <div class="detail-symbol">⌖</div>
+
+                    <h3>مكان الحفل</h3>
+
+                    <p>
+                        صالة الريفيرا<br>
+                        حلب
+                    </p>
+                </article>
+
+            </div>
+
+            <section class="countdown-section">
+
+                <p class="countdown-title">
+                    باقي على فرحتنا
+                </p>
+
+                <div class="countdown">
+
+                    <div>
+                        <strong id="days">00</strong>
+                        <span>يوم</span>
+                    </div>
+
+                    <div>
+                        <strong id="hours">00</strong>
+                        <span>ساعة</span>
+                    </div>
+
+                    <div>
+                        <strong id="minutes">00</strong>
+                        <span>دقيقة</span>
+                    </div>
+
+                    <div>
+                        <strong id="seconds">00</strong>
+                        <span>ثانية</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <p class="closing">
+                بحضوركم تكتمل فرحتنا
+            </p>
+
+            <p class="blessing">
+                بارك الله لكما وبارك عليكما وجمع بينكما في خير
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- زر الموسيقى -->
+    <button class="music-button"
+            id="musicButton"
+            aria-label="تشغيل أو إيقاف الموسيقى">
+        ♫
+    </button>
+
+
+    <!-- الموسيقى -->
+    <audio id="weddingMusic"
+           loop
+           preload="auto">
+
+        <source src="music/wedding.mp3"
+                type="audio/mpeg">
+
+    </audio>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
